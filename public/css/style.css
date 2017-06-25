@@ -1,8 +1,228 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+html {
+  min-height: 100%;
+  position: relative;
 }
 
-a {
-  color: #00B7FF;
+body {
+  background: #caccc3;
+  font-family: 'Lato', sans-serif;
+  margin-bottom: 241px;
+}
+
+.modal .modal-body .card {
+  margin-bottom: 15px;
+}
+
+.welcome {
+  position: relative;
+  height: 70vh;
+  margin-top: 0;
+  margin-bottom: 40px;
+  width: 100%;
+  background-image: url("../images/bg.jpg");
+  -webkit-filter: grayscale(55%);
+  /* Safari 6.0 - 9.0 */
+  -moz-filter: grayscale(55%);
+  -ms-filter: grayscale(55%);
+  -o-filter: grayscale(55%);
+  filter: grayscale(55%);
+  text-align: center;
+}
+.welcome h1 {
+  position: relative;
+  top: 23vh;
+  font-size: 9vh;
+  line-height: 9vh;
+  margin-top: 0;
+  color: #06d400;
+}
+.welcome h2 {
+  position: relative;
+  top: 23vh;
+  font-size: 5vh;
+  line-height: 5vh;
+  margin-bottom: 0;
+  color: #06d400;
+}
+
+.transparent {
+  background-color: rgba(34, 34, 34, 0) !important;
+  border-color: rgba(8, 8, 8, 0);
+  background-image: none;
+}
+
+.fixed-top {
+  position: absolute;
+}
+
+nav {
+  z-index: 1000;
+}
+nav ul.navbar-nav .nav-link {
+  color: #5bc0de !important;
+}
+nav ul.navbar-nav .nav-link:hover {
+  color: #19cede !important;
+}
+nav ul.navbar-nav button {
+  cursor: pointer;
+}
+
+main {
+  padding-bottom: 40px;
+}
+main .card {
+  margin-bottom: 30px;
+}
+main .card .card-img-top {
+  height: 220px;
+}
+main .card #view-notes {
+  margin-right: 10px;
+}
+
+.page-saved-articles {
+  margin-top: 96px;
+}
+
+/*! Footer */
+footer {
+  background: #222222;
+  color: #fff;
+  margin: 0;
+  font-family: 'Open Sans', sans-serif;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 241px;
+}
+footer h3 {
+  color: #9d9d9d;
+  font-weight: lighter;
+  font-style: italic;
+  margin-bottom: 0;
+  margin-top: 40px;
+}
+footer p, footer li {
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 10px 0;
+}
+footer a {
+  color: #fff;
+  text-decoration: none;
+  -webkit-transition: color .5s, background .5s;
+  transition: color .5s, background .5s;
+}
+footer a:hover {
+  color: #65c2ed;
+}
+footer .centered {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+}
+footer .centered:before, footer .centered:after {
+  content: '\0020';
+  display: block;
+  overflow: hidden;
+  visibility: hidden;
+  width: 0;
+  height: 0;
+  clear: both;
+}
+footer .centered .footer-contact {
+  width: 35%;
+}
+footer .centered .footer-contact .fa {
+  width: 20px;
+  padding-right: 10px;
+}
+footer .centered .footer-connect {
+  width: 35%;
+}
+footer .centered .footer-navigation {
+  width: 30%;
+}
+footer .centered .footer-navigation ul {
+  width: 50%;
+  float: left;
+}
+footer .centered .footer-navigation .fa {
+  padding-right: 10px;
+}
+footer .bottom-bar {
+  position: relative;
+  text-align: center;
+  font-size: .8em;
+  text-transform: uppercase;
+  background: #000;
+  padding: 15px 0;
+}
+footer ul {
+  list-style-type: none;
+}
+
+.social li {
+  float: left;
+}
+.social a {
+  display: inline-block;
+  padding: 0 7px;
+  margin: 3px 10px 10px 0;
+  vertical-align: middle;
+}
+
+* {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/*! Footer */
+@media only screen and (max-width: 749px) {
+  body {
+    margin-bottom: 397px;
+  }
+
+  footer {
+    height: 397px;
+  }
+  footer .centered {
+    flex-wrap: wrap;
+  }
+  footer .centered .footer-contact {
+    width: 50%;
+    margin: 0 auto;
+  }
+  footer .centered .footer-connect {
+    width: 50%;
+    margin: 0 auto;
+  }
+  footer .centered .footer-navigation {
+    width: 100%;
+  }
+}
+@media only screen and (max-width: 500px) {
+  body {
+    margin-bottom: 600px !important;
+  }
+
+  footer {
+    height: 505px;
+  }
+  footer .centered {
+    margin-right: 0;
+    margin-left: 0;
+  }
+  footer .centered .footer-contact {
+    width: 100%;
+    margin: 0 auto;
+  }
+  footer .centered .footer-connect {
+    width: 100%;
+    margin: 0 auto;
+  }
 }

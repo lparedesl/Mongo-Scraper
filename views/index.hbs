@@ -1,2 +1,157 @@
-<h1>{{ title }}</h1>
-<p>Welcome to {{ title }}</p>
+<main {{#if articles }}class="page-saved-articles"{{/if}}>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <img class="card-img-top" src="https://img.washingtonpost.com/rf/image_1484w/2010-2019/WashingtonPost/2017/06/23/Others/Images/2017-05-30/Protest_story-13.JPG" alt="Card image cap">
+                    <div class="card-block">
+                        <h4 class="card-title">In Venezuela, prisoners say abuse is so bad they are forced to eat pasta mixed with excrement</h4>
+                        <p class="card-text">Thousands of protesters have been arrested recently, and many allege mistreatment.</p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Rachelle Krygier, Joshua Partlow</li>
+                        <li class="list-group-item">1 day ago</li>
+                    </ul>
+                    <div class="card-block">
+                        {{#if articles}}
+                            <button class="btn btn-info float-left" type="button" id="view-notes">Notes</button>
+                            <form class="form-inline" action="" method="POST">
+                                <button class="btn btn-info float-left" type="button">Delete Article</button>
+                            </form>
+                        {{else if homepage}}
+                            <form class="form-inline" action="/save-article" method="POST">
+                                <button class="btn btn-info float-left" type="button">Save Article</button>
+                            </form>
+                        {{/if}}
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img class="card-img-top" src="https://img.washingtonpost.com/rf/image_220x164/2010-2019/WashingtonPost/2017/06/25/Foreign/Images/Qatar_Demands_51212-f8cfb-5022.jpg" alt="Card image cap">
+                    <div class="card-block">
+                        <h4 class="card-title">Tillerson urges Qatar and the gulf states to negotiate an end to their rift</h4>
+                        <p class="card-text">The U.S. secretary of state said a list of 13 demands included some that would be “very difficult” for Qatar to meet.</p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Carol Morello</li>
+                        <li class="list-group-item">2 hours ago</li>
+                    </ul>
+                    <div class="card-block">
+                        {{#if articles}}
+                            <button class="btn btn-info float-left" type="button" id="view-notes">Notes</button>
+                            <form class="form-inline" action="" method="POST">
+                                <button class="btn btn-info float-left" type="button">Delete Article</button>
+                            </form>
+                        {{else if homepage}}
+                            <form class="form-inline" action="/save-article" method="POST">
+                                <button class="btn btn-info float-left" type="button">Save Article</button>
+                            </form>
+                        {{/if}}
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img class="card-img-top" src="https://img.washingtonpost.com/rf/image_220x164/2010-2019/WashingtonPost/2017/06/24/Foreign/Images/IMG_2638.JPG" alt="Card image cap">
+                    <div class="card-block">
+                        <h4 class="card-title">An Afghan bird refuge comes back to life after decades of neglect</h4>
+                        <p class="card-text">But lack of cooperation from locals continues to hamper cleanup efforts at the scenic U.N.-protected site.</p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Pamela Constable</li>
+                        <li class="list-group-item">10 hours ago</li>
+                    </ul>
+                    <div class="card-block">
+                        {{#if articles}}
+                            <button class="btn btn-info float-left" type="button" id="view-notes">Notes</button>
+                            <form class="form-inline" action="" method="POST">
+                                <button class="btn btn-info float-left" type="button">Delete Article</button>
+                            </form>
+                        {{else if homepage}}
+                            <form class="form-inline" action="/save-article" method="POST">
+                                <button class="btn btn-info float-left" type="button">Save Article</button>
+                            </form>
+                        {{/if}}
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img class="card-img-top" src="https://img.washingtonpost.com/rf/image_1484w/2010-2019/WashingtonPost/2017/06/23/Others/Images/2017-05-30/Protest_story-13.JPG" alt="Card image cap">
+                    <div class="card-block">
+                        <h4 class="card-title">In Venezuela, prisoners say abuse is so bad they are forced to eat pasta mixed with excrement</h4>
+                        <p class="card-text">Thousands of protesters have been arrested recently, and many allege mistreatment.</p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Rachelle Krygier, Joshua Partlow</li>
+                        <li class="list-group-item">1 day ago</li>
+                    </ul>
+                    <div class="card-block">
+                        {{#if articles}}
+                            <button class="btn btn-info float-left" type="button" id="view-notes">Notes</button>
+                            <form class="form-inline" action="" method="POST">
+                                <button class="btn btn-info float-left" type="button">Delete Article</button>
+                            </form>
+                        {{else if homepage}}
+                            <form class="form-inline" action="/save-article" method="POST">
+                                <button class="btn btn-info float-left" type="button">Save Article</button>
+                            </form>
+                        {{/if}}
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img class="card-img-top" src="https://img.washingtonpost.com/rf/image_220x164/2010-2019/WashingtonPost/2017/06/25/Foreign/Images/Qatar_Demands_51212-f8cfb-5022.jpg" alt="Card image cap">
+                    <div class="card-block">
+                        <h4 class="card-title">Tillerson urges Qatar and the gulf states to negotiate an end to their rift</h4>
+                        <p class="card-text">The U.S. secretary of state said a list of 13 demands included some that would be “very difficult” for Qatar to meet.</p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Carol Morello</li>
+                        <li class="list-group-item">2 hours ago</li>
+                    </ul>
+                    <div class="card-block">
+                        {{#if articles}}
+                            <button class="btn btn-info float-left" type="button" id="view-notes">Notes</button>
+                            <form class="form-inline" action="" method="POST">
+                                <button class="btn btn-info float-left" type="button">Delete Article</button>
+                            </form>
+                        {{else if homepage}}
+                            <form class="form-inline" action="/save-article" method="POST">
+                                <button class="btn btn-info float-left" type="button">Save Article</button>
+                            </form>
+                        {{/if}}
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img class="card-img-top" src="https://img.washingtonpost.com/rf/image_220x164/2010-2019/WashingtonPost/2017/06/24/Foreign/Images/IMG_2638.JPG" alt="Card image cap">
+                    <div class="card-block">
+                        <h4 class="card-title">An Afghan bird refuge comes back to life after decades of neglect</h4>
+                        <p class="card-text">But lack of cooperation from locals continues to hamper cleanup efforts at the scenic U.N.-protected site.</p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Pamela Constable</li>
+                        <li class="list-group-item">10 hours ago</li>
+                    </ul>
+                    <div class="card-block">
+                        {{#if articles}}
+                            <button class="btn btn-info float-left" type="button" id="view-notes">Notes</button>
+                            <form class="form-inline" action="" method="POST">
+                                <button class="btn btn-info float-left" type="button">Delete Article</button>
+                            </form>
+                        {{else if homepage}}
+                            <form class="form-inline" action="/save-article" method="POST">
+                                <button class="btn btn-info float-left" type="button">Save Article</button>
+                            </form>
+                        {{/if}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<script src="/javascript/index.js"></script>
