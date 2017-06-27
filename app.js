@@ -11,6 +11,19 @@ var index = require('./routes/index');
 
 var app = express();
 
+// Connect to Database
+mongoose.connect('mongodb://heroku_ggzjphjl:oqd0jvfi0s92qqdpjpl3p7oc7n@ds139362.mlab.com:39362/heroku_ggzjphjl');
+
+var db = mongoose.connection;
+
+db.on("error", function(error) {
+    console.log("Mongoose Error: ", error);
+});
+
+db.once("open", function() {
+    console.log("Mongoose connection successful.");
+});
+
 // view engine setup
 app.engine('.hbs', expressHbs({
     defaultLayout: 'layout',

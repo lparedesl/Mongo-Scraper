@@ -77,7 +77,7 @@ main .card {
 main .card .card-img-top {
   height: 220px;
 }
-main .card #view-notes {
+main .card .view-notes {
   margin-right: 10px;
 }
 
