@@ -18,10 +18,10 @@ var schema = new Schema({
         type: String,
         required: true
     },
-    from: {
-        type: String,
-        required: true
-    }
+    notes: [{
+        type: Schema.Types.ObjectId,
+        ref: "Note"
+    }]
 });
 
 module.exports = mongoose.model('Saved', schema);

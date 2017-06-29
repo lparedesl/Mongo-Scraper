@@ -5,30 +5,30 @@ var request = require("request");
 var cheerio = require("cheerio");
 var Article = require("../models/articles");
 var Saved = require("../models/saved");
+var Note = require("../models/note");
 
 function exit() {
     mongoose.disconnect();
 }
 
-function storeArticles(i, articles, cb) {
+function storeArticles(i, articles, results, cb) {
     if (i < articles.length) {
         Saved.findOne({
             title: articles[i].title
         }, function(error, data) {
             if (data) {
+                articles[i]._id = data._id;
                 articles[i].saved = true;
-                i++;
-                if (i === articles.length) {
-                    cb();
-                }
-                storeArticles(i, articles, cb);
             }
-            articles[i].save(function(err, result) {
+            articles[i].save(function(error, data) {
+                if (data) {
+                    results.push(data);
+                }
                 i++;
                 if (i === articles.length) {
-                    cb();
+                    return cb(results);
                 }
-                storeArticles(i, articles, cb);
+                storeArticles(i, articles, results, cb);
             });
         });
     }
@@ -102,10 +102,9 @@ router.post('/scrape', function(req, res, next) {
                 }));
             });
 
-            storeArticles(0, articles, function() {
-                console.log(articles);
-                // res.redirect("/");
-                res.json(articles);
+            var results = [];
+            storeArticles(0, articles, results, function(data) {
+                res.json(data);
             });
         });
     });
@@ -116,12 +115,11 @@ router.post('/save-article', function(req, res, next) {
         saved: true
     }, function(error, data) {
         Saved.create({
-            _id: data._id,
+            _id: req.body._id,
             title: data.title,
             desc: data.desc,
             img: data.img,
-            authors: data.authors,
-            from: data.from
+            authors: data.authors
         }, function (error, data) {
             res.end();
         });
@@ -132,9 +130,52 @@ router.post('/delete-article', function(req, res, next) {
     Article.findByIdAndUpdate(req.body._id, {
         saved: false
     }, function(error, data) {
-        Saved.findByIdAndRemove(data._id, function (error, data) {
+        Saved.findByIdAndRemove(req.body._id, function (error, data) {
             res.end();
         });
+    });
+});
+
+router.post('/get-notes/:articleId', function(req, res, next) {
+    Saved.findById(req.params.articleId)
+    .populate("notes")
+    .exec(function(error, data) {
+        if (error) {
+            res.send(error);
+        } else {
+            res.json(data);
+        }
+    });
+});
+
+router.post('/save-note/:articleId', function(req, res, next) {
+    Note.create(req.body, function (error, data) {
+        if (error) {
+            res.send(error);
+        } else {
+            Saved.findOneAndUpdate({
+                _id: req.params.articleId
+            }, {
+                $push: {
+                    "notes": data._id
+                }
+            }, {
+                new: true
+            }, function(err, newdata) {
+                if (err) {
+                    res.send(err);
+                }
+                else {
+                    res.end();
+                }
+            });
+        }
+    });
+});
+
+router.post('/delete-note', function(req, res, next) {
+    Note.findByIdAndRemove(req.body.id, function (error, data) {
+        res.end();
     });
 });
 

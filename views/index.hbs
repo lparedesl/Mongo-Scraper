@@ -1,31 +1,31 @@
 <main {{#if articles }}class="page-saved-articles"{{/if}}>
     <div class="container">
         <div class="row">
-            {{!--{{#if scraped}}--}}
-                {{#each data as |article|}}
-                    <div class="col-md-4">
-                        <div class="card" data-id="{{article._id}}">
-                            <img class="card-img-top" src="{{article.img}}" alt="Card image cap">
-                            <div class="card-block">
-                                <h4 class="card-title">{{article.title}}</h4>
-                                <p class="card-text">{{article.desc}}</p>
-                            </div>
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item author">{{article.authors}}</li>
+            {{#each data as |article|}}
+                <div class="col-md-4">
+                    <div class="card" data-id="{{article._id}}">
+                        <img class="card-img-top" src="{{article.img}}" alt="Card image cap">
+                        <div class="card-block">
+                            <h4 class="card-title">{{article.title}}</h4>
+                            <p class="card-text">{{article.desc}}</p>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item author">{{article.authors}}</li>
+                            {{#if ../homepage}}
                                 <li class="list-group-item from">{{article.from}}</li>
-                            </ul>
-                            <div class="card-block">
-                                {{#if ../articles}}
-                                    <button class="btn btn-info float-left view-notes" type="button" data-id="{{article._id}}">Notes</button>
-                                    <button class="btn btn-info float-left delete-article" type="button" data-id="{{article._id}}">Delete Article</button>
-                                {{else if ../homepage}}
-                                    <button class="btn btn-info float-left save-article {{#if article.saved}}disabled{{/if}}" type="button" data-id="{{article._id}}">Save Article</button>
-                                {{/if}}
-                            </div>
+                            {{/if}}
+                        </ul>
+                        <div class="card-block">
+                            {{#if ../articles}}
+                                <button class="btn btn-info float-left view-notes" type="button" data-id="{{article._id}}">Notes</button>
+                                <button class="btn btn-info float-left delete-article" type="button" data-id="{{article._id}}">Delete Article</button>
+                            {{else if ../homepage}}
+                                <button class="btn btn-info float-left save-article {{#if article.saved}}disabled{{/if}}" type="button" data-id="{{article._id}}">{{#if article.saved}}Saved{{else}}Save Article{{/if}}</button>
+                            {{/if}}
                         </div>
                     </div>
-                {{/each}}
-            {{!--{{/if}}--}}
+                </div>
+            {{/each}}
         </div>
     </div>
 </main>

@@ -5,7 +5,7 @@
                 <h5 class="modal-title" id="exampleModalLabel">Scraping is done</h5>
             </div>
             <div class="modal-body">
-                Added 25 new articles
+                Added <span id="total-articles"></span> new articles
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
@@ -18,32 +18,19 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Notes for article: 585ec940385014052cf0gb76</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Notes for article: <span id="article-id"></span></h5>
             </div>
-            <form action="" method="POST" role="form">
+            {{!--<form method="POST" role="form">--}}
                 <div class="modal-body">
-                    <div class="cards">
-                        <div class="card">
-                            <div class="card-block">
-                                <p>This is some text within a card block.</p>
-                                <a href="#" class="card-link">Remove</a>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="card-block">
-                                <p>This is some text within a card block.</p>
-                                <a href="#" class="card-link">Remove</a>
-                            </div>
-                        </div>
-                    </div>
+                    <div class="cards"></div>
                     <div class="form-group">
-                        <textarea class="form-control" id="exampleTextarea" rows="3" placeholder="New Note"></textarea>
+                        <textarea class="form-control" id="note-text" name="text" rows="3" placeholder="New Note"></textarea>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-info" data-dismiss="modal">Save Note</button>
+                    <button type="button" class="btn btn-info save-note">Save Note</button>
                 </div>
-            </form>
+            {{!--</form>--}}
         </div>
     </div>
 </div>

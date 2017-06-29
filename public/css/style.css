@@ -1,3 +1,7 @@
+@font-face {
+  font-family: 'Engravers Old English';
+  src: url("/fonts/engravers-old-english.ttf");
+}
 html {
   min-height: 100%;
   position: relative;
@@ -30,19 +34,20 @@ body {
 }
 .welcome h1 {
   position: relative;
-  top: 23vh;
-  font-size: 9vh;
+  top: 22vh;
+  font-size: 11vh;
   line-height: 9vh;
   margin-top: 0;
-  color: #06d400;
+  color: #00ff8f;
 }
 .welcome h2 {
   position: relative;
-  top: 23vh;
-  font-size: 5vh;
+  top: 25vh;
+  font-family: "Engravers Old English";
+  font-size: 7vh;
   line-height: 5vh;
   margin-bottom: 0;
-  color: #06d400;
+  color: #00ff8f;
 }
 
 .transparent {
@@ -59,13 +64,25 @@ nav {
   z-index: 1000;
 }
 nav ul.navbar-nav .nav-link {
-  color: #5bc0de !important;
+  color: #3feab3 !important;
 }
 nav ul.navbar-nav .nav-link:hover {
-  color: #19cede !important;
+  color: #00ff8f !important;
 }
 nav ul.navbar-nav button {
   cursor: pointer;
+  background-color: #3feab3;
+  border: #3feab3;
+  transition: background-color 0.5s ease-out;
+  -webkit-transition: background-color 0.5s ease-out;
+  -moz-transition: background-color 0.5s ease-out;
+  -o-transition: background-color 0.5s ease-out;
+}
+nav ul.navbar-nav button:hover {
+  background-color: #00ff8f;
+  transition: background-color 0.5s ease-in;
+  -moz-transition: background-color 0.5s ease-in;
+  -o-transition: background-color 0.5s ease-in;
 }
 
 main {
@@ -76,6 +93,9 @@ main .card {
 }
 main .card .card-img-top {
   height: 220px;
+}
+main .card .card-block button {
+  cursor: pointer;
 }
 main .card .view-notes {
   margin-right: 10px;

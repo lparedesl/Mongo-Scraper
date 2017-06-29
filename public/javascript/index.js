@@ -2,12 +2,13 @@ $(document).ready(function() {
     $("#scrape").click(function() {
         $.post("/scrape")
         .done(function(data) {
-            console.log(data);
             $(".row").empty();
             data.forEach(function(article) {
                 var classDisabled = null;
-                if (articles.saved) {
+                var buttonText = "Save Article";
+                if (article.saved) {
                     classDisabled = "disabled";
+                    buttonText = "Saved";
                 }
                 $(".row").append(`
                     <div class="col-md-4">
@@ -22,24 +23,26 @@ $(document).ready(function() {
                                 <li class="list-group-item from">${article.from}</li>
                             </ul>
                             <div class="card-block">
-                                <button class="btn btn-info float-left save-article ${classDisabled}" type="button" data-id="${article._id}">Save Article</button>
+                                <button class="btn btn-info float-left save-article ${classDisabled}" type="button" data-id="${article._id}">${buttonText}</button>
                             </div>
                         </div>
                     </div>
                 `);
             });
+            $("#total-articles").text(data.length);
             $('#scrape-done').modal();
         });
     });
 
-    $(".save-article").click(function() {
+    $(document).on("click", ".save-article", function() {
         var self = $(this);
         if (!self.hasClass("disabled")) {
             $.post("/save-article", {
                 _id: self.data("id")
             })
-            .done(function(data) {
+            .done(function() {
                 self.addClass("disabled");
+                self.text("Saved");
             });
         }
     });
@@ -49,13 +52,50 @@ $(document).ready(function() {
         $.post("/delete-article", {
             _id: self.data("id")
         })
-        .done(function(data) {
+        .done(function() {
             location.reload();
         });
     });
 
+    $(".view-notes").click(function() {
+        $("#article-notes form").attr("action", "/save-note/" + $(this).data("id"));
+        $("#article-id").text($(this).data("id"));
+        $("#article-notes button").attr("data-id", $(this).data("id"));
+        $(".cards").empty();
+        $.post("/get-notes/" + $(this).data("id"))
+        .done(function(data) {
+            console.log(data);
+            $(".cards").empty();
+            data.notes.forEach(function(note) {
+                $(".cards").append(`
+                    <div class="card">
+                        <div class="card-block">
+                            <p>${note.text}</p>
+                            <a href="#" class="card-link delete-note" data-id="${note._id}">Remove</a>
+                        </div>
+                    </div>
+                `);
+            });
+            $('#article-notes').modal();
+        });
+    });
 
-    $("#view-notes").click(function() {
-        $('#article-notes').modal();
+    $(".save-note").click(function() {
+        $.post("/save-note/" + $(this).data("id"), {
+            text: $("#note-text").val().trim()
+        })
+        .done(function() {
+            $("#note-text").val("");
+            $('#article-notes').modal('hide');
+        });
+    });
+
+    $(document).on("click", ".delete-note", function() {
+        $.post("/delete-note", {
+            id: $(this).data("id")
+        })
+        .done(function() {
+            location.reload();
+        });
     });
 });
